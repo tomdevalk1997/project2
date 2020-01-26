@@ -1,0 +1,75 @@
+$color_primary: #191927;
+$color-primary-text: white;
+$color_primary_hover: #616180;
+
+body {
+  background-color: $color_primary;
+}
+
+a {
+  color: $color-primary-text;
+}
+
+a:hover {
+  color: $color_primary_hover;
+}
+
+input {
+  width: calc(100% - 50px);
+}
+
+ul{
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.btn {
+  margin: 5px;
+}
+
+.left-column {
+  color: $color-primary-text;
+  height: 100%;
+}
+
+#channel-list-field {
+  color: $color-primary-text;
+  height: calc(100% - 220px);
+  overflow: scroll;
+}
+
+#new-channel-field {
+  height: 125px;
+  color: $color-primary-text;
+}
+
+.title-bar {
+  height: 100px;
+  color: $color-primary-text;
+}
+
+.btn {
+	background-color: $color_primary;
+	border: $color_primary;
+	color: $color-primary-text;
+}
+
+.btn:hover {
+	background-color: $color_primary_hover;
+	border: $color_primary_hover;
+	color: $color-primary-text;
+}
+
+.element {
+  border-color: $color-primary-text;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 6px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#channel {
+  background-color: $color-primary-text;
+  height: calc(100% - 200px);
+}

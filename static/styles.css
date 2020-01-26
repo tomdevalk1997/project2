@@ -1,0 +1,73 @@
+body {
+  background-color: #191927;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: #616180;
+}
+
+input {
+  width: calc(100% - 50px);
+}
+
+ul {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.btn {
+  margin: 5px;
+}
+
+.left-column {
+  color: white;
+  height: 100%;
+}
+
+#channel-list-field {
+  color: white;
+  height: calc(100% - 220px);
+  overflow: scroll;
+}
+
+#new-channel-field {
+  height: 125px;
+  color: white;
+}
+
+.title-bar {
+  height: 100px;
+  color: white;
+}
+
+.btn {
+  background-color: #191927;
+  border: #191927;
+  color: white;
+}
+
+.btn:hover {
+  background-color: #616180;
+  border: #616180;
+  color: white;
+}
+
+.element {
+  border-color: white;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 6px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#channel {
+  background-color: white;
+  height: calc(100% - 200px);
+}
+
+/*# sourceMappingURL=styles.css.map */
