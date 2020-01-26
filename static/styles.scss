@@ -6,20 +6,22 @@ body {
   background-color: $color_primary;
 }
 
+h1 {
+  text-align: center;
+}
+
 a {
   color: $color-primary-text;
+  text-decoration: none;
 }
 
 a:hover {
   color: $color_primary_hover;
-}
-
-input {
-  width: calc(100% - 50px);
+  text-decoration: none;
 }
 
 ul{
-  list-style-position: inside;
+  list-style-type:none;
   padding-left: 0;
 }
 
@@ -34,9 +36,10 @@ ul{
 
 #channel-list-field {
   color: $color-primary-text;
-  height: calc(100% - 220px);
-  overflow: scroll;
+  height: calc(100vh - 375px);
+  overflow-y: scroll;
 }
+
 
 #new-channel-field {
   height: 125px;
@@ -71,5 +74,13 @@ ul{
 
 #channel {
   background-color: $color-primary-text;
-  height: calc(100% - 200px);
+  height: calc(100vh - 240px);
+}
+
+#send-message {
+  margin-top: 7px;
+}
+
+#message-input {
+  margin-top: 7px;
 }

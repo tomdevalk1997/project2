@@ -2,20 +2,22 @@ body {
   background-color: #191927;
 }
 
+h1 {
+  text-align: center;
+}
+
 a {
   color: white;
+  text-decoration: none;
 }
 
 a:hover {
   color: #616180;
-}
-
-input {
-  width: calc(100% - 50px);
+  text-decoration: none;
 }
 
 ul {
-  list-style-position: inside;
+  list-style-type: none;
   padding-left: 0;
 }
 
@@ -30,8 +32,8 @@ ul {
 
 #channel-list-field {
   color: white;
-  height: calc(100% - 220px);
-  overflow: scroll;
+  height: calc(100vh - 375px);
+  overflow-y: scroll;
 }
 
 #new-channel-field {
@@ -67,7 +69,15 @@ ul {
 
 #channel {
   background-color: white;
-  height: calc(100% - 200px);
+  height: calc(100vh - 240px);
+}
+
+#send-message {
+  margin-top: 7px;
+}
+
+#message-input {
+  margin-top: 7px;
 }
 
 /*# sourceMappingURL=styles.css.map */

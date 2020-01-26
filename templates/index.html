@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Message Sender</title>
+        <title>Messages</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="/static/styles.css">
     </head>
@@ -10,7 +10,7 @@
         <div class="row">
           <div id="full-left-column" class="col-sm-3 left-column" style="height:100%">
             <div id="channel-info-field" class="element title-bar">
-              <h3>Message Sender</h3>
+              <h1>Messages</h1>
             </div>
             <div id="new-channel-field" class="element">
               <form class="form-inline" action="" method="post">
@@ -20,8 +20,7 @@
               </form>
             </div>
             <div id="channel-list-field" class="element">
-              <h5>Channels</h5>
-              <ul id="channel-list">
+              <ul>
                 {% for channel in channels %}
                   <li><a href="#">{{ channel }}</a></li>
                 {% endfor %}
@@ -42,10 +41,10 @@
             <div id="channel" class="element">
             </div>
             <div id="message-input-bar" class="title-bar element">
-              <form class="form-inline" action="" method="post">
-                <input class="form-control" name="message" type="message" placeholder="Please type your message">
-                <button class="btn btn-primary" type="send">Send</button>
-              </form>
+              <div id="input-form" class="input-group">
+                <input id="message-input" type="text" class="form-control" placeholder="Message">
+                <button id="send-message" class="btn" type="button">Send</button>
+              </div>
             </div>
           </div>
         </div>
