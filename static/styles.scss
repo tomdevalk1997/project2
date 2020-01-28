@@ -100,11 +100,19 @@ ul{
   background-color: $color-primary-text;
   height: calc(100vh - 240px);
   overflow-y: scroll;
-  display: flex; 
+  display: flex;
   flex-direction: column-reverse;
 }
 
 #send-message {
+  margin-top: 7px;
+}
+
+#username-input {
+  margin-top: 7px;
+}
+
+#username-submit {
   margin-top: 7px;
 }
 

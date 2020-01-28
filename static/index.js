@@ -6,11 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // When connected, configure buttons
     socket.on('connect', () => {
 
-        // Each button should emit a "submit vote" event
-        document.querySelectorAll('#send').forEach(button => {
+        // Send button should emit a "send message" event
+        document.querySelectorAll('#send-message').forEach(button => {
             button.onclick = () => {
-                const message = button.dataset.vote; // klopt nog niet, user, channel, tijd toevoegen
+                alert("Button clicked, message being sent");
+                const message = document.getElementById("message-input"); // klopt nog niet, user, channel, tijd toevoegen, dataset....
+                // const user = button.dataset.vote;
+                // const channel = button.dataset.vote;
                 socket.emit('send message', {'message': message});
+            };
+        });
+
+        // Submit button should emit a "create username" event
+        document.querySelectorAll('#username-submit').forEach(button => {
+            button.onclick = () => {
+                const username = button.dataset.vote; // klopt nog niet, dataset....
+                socket.emit('create username', {'username': username});
             };
         });
     });
@@ -22,12 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#maybe').innerHTML = data.maybe;
     });
 });
-function add_post(contents) {
+//    function add_post(contents) {
 
                   // Create new post.
-                  const post = document.createElement('div');
-                  post.className = 'post';
-                  post.innerHTML = contents;
-
-                  // Add post to DOM.
-                  document.querySelector('#posts').append(post);
+                  // const post = document.createElement('div');
+                  // post.className = 'post';
+                  // post.innerHTML = contents;
+                  //
+                  // // Add post to DOM.
+                  // document.querySelector('#posts').append(post);
