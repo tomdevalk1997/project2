@@ -6,6 +6,10 @@ h1 {
   text-align: center;
 }
 
+h3 {
+  margin-top: 8px;
+}
+
 a {
   color: white;
   text-decoration: none;
@@ -67,9 +71,30 @@ ul {
   margin-top: 10px;
 }
 
+.foreign-message {
+  background-color: #20ba49;
+  border-radius: 4px;
+  padding: 7px;
+  width: 60%;
+  margin-left: 0px;
+  margin-bottom: 5px;
+}
+
+.local-message {
+  background-color: #2075ba;
+  border-radius: 4px;
+  padding: 7px;
+  width: 60%;
+  margin-left: 40%;
+  margin-bottom: 5px;
+}
+
 #channel {
   background-color: white;
   height: calc(100vh - 240px);
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 #send-message {

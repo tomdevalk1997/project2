@@ -7,18 +7,27 @@ document.addEventListener('DOMContentLoaded', () => {
     socket.on('connect', () => {
 
         // Each button should emit a "submit vote" event
-        document.querySelectorAll('button').forEach(button => {
+        document.querySelectorAll('#send').forEach(button => {
             button.onclick = () => {
-                const selection = button.dataset.vote;
-                socket.emit('submit vote', {'selection': selection});
+                const message = button.dataset.vote; // klopt nog niet, user, channel, tijd toevoegen
+                socket.emit('send message', {'message': message});
             };
         });
     });
 
     // When a new vote is announced, add to the unordered list
-    socket.on('vote totals', data => {
+    socket.on('message sent', data => {
         document.querySelector('#yes').innerHTML = data.yes;
         document.querySelector('#no').innerHTML = data.no;
         document.querySelector('#maybe').innerHTML = data.maybe;
     });
 });
+function add_post(contents) {
+
+                  // Create new post.
+                  const post = document.createElement('div');
+                  post.className = 'post';
+                  post.innerHTML = contents;
+
+                  // Add post to DOM.
+                  document.querySelector('#posts').append(post);

@@ -1,6 +1,8 @@
 $color_primary: #191927;
 $color-primary-text: white;
 $color_primary_hover: #616180;
+$color-foreign: #20ba49;
+$color-local: #2075ba;
 
 body {
   background-color: $color_primary;
@@ -8,6 +10,10 @@ body {
 
 h1 {
   text-align: center;
+}
+
+h3 {
+  margin-top: 8px;
 }
 
 a {
@@ -72,9 +78,30 @@ ul{
   margin-top: 10px;
 }
 
+.foreign-message {
+  background-color: $color-foreign;
+  border-radius: 4px;
+  padding: 7px;
+  width: 60%;
+  margin-left: 0px;
+  margin-bottom: 5px;
+}
+
+.local-message {
+  background-color: $color-local;
+  border-radius: 4px;
+  padding: 7px;
+  width: 60%;
+  margin-left: 40%;
+  margin-bottom: 5px;
+}
+
 #channel {
   background-color: $color-primary-text;
   height: calc(100vh - 240px);
+  overflow-y: scroll;
+  display: flex; 
+  flex-direction: column-reverse;
 }
 
 #send-message {
