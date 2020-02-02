@@ -8,16 +8,19 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from flask import request
 import requests
-from flask_socketio import SocketIO
+from datetime import datetime
+from flask_socketio import SocketIO, emit, join_room, leave_room
+
+# to avoid errors in python application.py
+from gevent import monkey as curious_george
+curious_george.patch_all(thread=False, select=False)
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
-# messages = [[channel, timestamp, message, user], [channel, timestamp, message, user]]
-messages = []
-channels = []
-users = []
+channel_list = {"general": [] }
+present_channel = {"initial":"general"}
 
 @app.route("/")
 def index():
@@ -34,35 +37,51 @@ def index():
         channels = []
     return render_template("index.html", display_name=display_name, status=status, channel_title=channel_title, channels=channels, logged_in=logged_in)
 
-@socketio.on("send message")
+@socketio.on('new_connection')
+def new_connection(data):
+    print(data["message_connection"])
+
+@socketio.on('test_message')
+def test_message(data):
+    print(data["message"])
+
+@socketio.on('send_message')
 def send_message(data):
-    message = data["message"]
-    print(message)
+    message = data['message']
+    timestamp = datetime.now()
+    timestamp_string = timestamp.strftime("%d/%m/%Y %H:%M:%S")
+    print(f"{message} sent at {timestamp_string}")
 
-    #channel = data["channel"]
-    #timestamp = datetime.datetime()
-    #user = data["user"]
+    #messages.append([message, timestamp])
+    #emit("message_sent", {"messages": messages}, broadcast=True)
 
-    # messages.append([channel, timestamp, message, user])
-    emit("message sent", messsages, broadcast=True)
-
-@socketio.on('my event')
-def handle_my_custom_event(json, methods=['GET', 'POST']):
-    print('received my event: ' + str(json))
-    socketio.emit('my response', json, callback=messageReceived)
-
-@socketio.on('join')
-def on_join(data):
-    username = data['username']
-    room = data['room']
+@socketio.on('joinroom')
+def joinroom():
+    username = "Tom"
+    room = 1
     join_room(room)
+    print(f"Entered room {room}")
     send(username + ' has entered the room.', room=room)
 
+@socketio.on('connectToRoom')
+def connectToRoom(data):
+    print(data)
+
+@socketio.on('leaveroom')
+def leaveroom():
+    username = "Tom"
+    room = 1
+    leave_room(room)
+    print(f"Left room {room}")
+    send(username + ' has entered the room.', room=room)
+
+@socketio.on('search')
 def search(data):
     pass
 
+@socketio.on('new_channel')
 def new_channel(data):
-    channels.append(f"{new_channel_name}")
+    pass
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)

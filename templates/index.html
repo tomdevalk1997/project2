@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="data:,">
         <title>Messages</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="/static/styles.css">
-        <script src="index.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+        <script src = "{{ url_for('static', filename='index.js') }}"></script>
     </head>
     <body>
       <div class="container-fluid">
@@ -15,23 +17,23 @@
             </div>
             <div id="new-channel-field" class="element">
               {% if logged_in %}
-                <form class="form-inline" action="" method="post">
-                  <input class="form-control" name="search-channel" type="search" placeholder="Channel name">
-                  <button class="btn btn-primary" type="search">Search</button>
-                  <button class="btn btn-primary" type="new-channel">New Channel</button>
+                <form class="form-inline">
+                  <input class="form-control" placeholder="Channel name">
+                  <button class="btn btn-primary">Search</button>
+                  <button class="btn btn-primary">New Channel</button>
                 </form>
               {% endif %}
             </div>
             <div id="channel-list-field" class="element">
               <ul>
                 {% for channel in channels %}
-                  <li><a href="#">{{ channel }}</a></li>
+                  <li><a href="#" class="channel-link">{{ channel }}</a></li>
                 {% endfor %}
               <ul>
             </div>
             <div id="profile-field" class="element title-bar">
               {% if logged_in %}
-                <h5>{{ display_name }}</h5>
+                <h5 id="display-name">{{ display_name }}</h5>
                 <p>{{ status }}</p>
               {% else %}
                 <div id="username-input-form" class="input-group">
@@ -43,13 +45,13 @@
           </div>
           <div id="full-right-column" class="col-sm-9">
             <div id="channel-title-bar" class="title-bar element">
-              <h3>{{ channel_title }}</h3>
+              <h3 id="channel-title">{{ channel_title }}</h3>
             </div>
             <div id="channel" class="element">
               <!--LET OP REVERSE ORDER VAN MESSAGES-->
               {% if logged_in %}
                 <div class="foreign-message">
-                  <p>Rebecca -- DATETIME<br>
+                  <p>X -- DATETIME<br>
                     Message
                   </p>
                 </div>
@@ -59,7 +61,7 @@
                   </p>
                 </div>
                 <div class="foreign-message">
-                  <p>Rebecca -- DATETIME<br>
+                  <p>X -- DATETIME<br>
                     Message
                   </p>
                 </div>
@@ -69,7 +71,7 @@
                   </p>
                 </div>
                 <div class="foreign-message">
-                  <p>Rebecca -- DATETIME<br>
+                  <p>X -- DATETIME<br>
                     Message
                   </p>
                 </div>
@@ -81,12 +83,12 @@
               {% endif %}
             </div>
             <div id="message-input-bar" class="title-bar element">
-              <div id="input-form" class="input-group">
-                {% if logged_in %}
-                  <input id="message-input" type="text" class="form-control" placeholder="Message">
-                  <button id="send-message" class="btn" type="button">Send</button>
-                {% endif %}
-              </div>
+              {% if logged_in %}
+                <div id="input-form" class="input-group">
+                  <input id="message-input" class="form-control" placeholder="Message">
+                  <button id="send-message" class="btn">Send</button>
+                </div>
+              {% endif %}
             </div>
           </div>
         </div>
